@@ -18,13 +18,14 @@
         <div th:if="${pizzas.size() == 0}">
             <p>No pizza founded</p>
         </div>
-        <table class="table">
+        <table class="table" th:if="${pizzas.size() > 0}">
             <thead>
 
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">name</th>
                 <th scope="col">price</th>
+                <th scope="col">img</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,7 @@
                 <th scope="row" th:text="${pizza.id}"></th>
                 <td th:text="${pizza.name}"></td>
                 <td th:text="|${pizza.price}€|"></td>
+                <td><img th:src="${pizza.imgUrl}" width="100px" height="100px"></td>
             </tr>
             </tbody>
         </table>

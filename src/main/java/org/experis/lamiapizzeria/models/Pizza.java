@@ -17,6 +17,16 @@ public class Pizza {
   private String description;
   private BigDecimal price;
   
+  @Column(columnDefinition = "varchar(255) default 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg'")
+  private String imgUrl;
+  
+  public String getImgUrl() {
+    return imgUrl;
+  }
+  
+  public void setImgUrl(String imgUrl) {
+    this.imgUrl = imgUrl;
+  }
   
   public Integer getId() {
     return id;
