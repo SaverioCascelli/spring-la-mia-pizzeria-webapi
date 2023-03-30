@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/pizza")
@@ -18,9 +20,16 @@ public class PizzaController {
   @Autowired
   private PizzaRepository pizzaRepository;
   
+  
   @GetMapping
-  public String index(Model model) {
-    List<Pizza> pizzas = pizzaRepository.findAll();
+  public String index(Model model, @RequestParam(name = "search") Optional<String> keyword) {
+    
+    List<Pizza> pizzas;
+    if (keyword.isEmpty()) {
+      pizzas = pizzaRepository.findAll();
+    } else {
+      pizzas = pizzaRepository.findByNameContainingIgnoreCase(keyword.get());
+    }
     model.addAttribute("pizzas", pizzas);
     return "/pizza/index";
   }
