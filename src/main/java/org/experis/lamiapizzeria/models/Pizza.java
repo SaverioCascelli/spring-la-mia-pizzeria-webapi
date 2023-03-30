@@ -12,13 +12,15 @@ public class Pizza {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   
-  private String name;
   @Lob
   private String description;
-  private BigDecimal price;
   
   @Column(columnDefinition = "varchar(255) default 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg'")
   private String imgUrl;
+  
+  private String name;
+  private BigDecimal price;
+  
   
   public String getImgUrl() {
     return imgUrl;
