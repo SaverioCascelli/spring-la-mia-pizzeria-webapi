@@ -15,15 +15,15 @@
 <form id="pizza-form" th:object="${pizza}" th:action="@{/pizza/create} " method="post">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" th:fiels="*{name}">
+        <input type="text" class="form-control" id="name" th:field="*{name}">
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">Price</label>
-        <input type="number" step=".10" class="form-control" id="price" th:fiels="*{price}">
+        <input type="number" step=".10" class="form-control" id="price" th:field="*{price}">
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" th:fiels="*{description}">
+        <input type="text" class="form-control" id="description" th:field="*{description}">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

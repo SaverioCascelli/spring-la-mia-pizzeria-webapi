@@ -21,6 +21,7 @@ public class Pizza {
   public Pizza() {
   }
   
+  
   public String getImgUrl() {
     return imgUrl;
   }
