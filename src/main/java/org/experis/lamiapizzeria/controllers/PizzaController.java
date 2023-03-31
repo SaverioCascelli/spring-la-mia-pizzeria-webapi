@@ -1,11 +1,13 @@
 package org.experis.lamiapizzeria.controllers;
 
+import jakarta.validation.Valid;
 import org.experis.lamiapizzeria.models.Pizza;
 import org.experis.lamiapizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -48,7 +50,11 @@ public class PizzaController {
   }
   
   @PostMapping("/create")
-  public String create(@ModelAttribute("pizza") Pizza formPizza) {
+  public String create(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+    
+    if (bindingResult.hasErrors()) {
+      return "/pizza/create";
+    }
     
     pizzaRepository.save(formPizza);
     return "redirect:/pizza";

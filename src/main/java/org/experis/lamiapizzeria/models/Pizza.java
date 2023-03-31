@@ -1,6 +1,9 @@
 package org.experis.lamiapizzeria.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
@@ -12,10 +15,13 @@ public class Pizza {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   @Lob
+  @Size(max = 255, message = "La descrizione ha una grandezza massima di 255 caratteri")
   private String description;
   @Column(columnDefinition = "varchar(255) default 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg'")
   private String imgUrl;
+  @NotEmpty(message = "Il campo 'nome' non può essere vuoto.")
   private String name;
+  @Positive(message = "Il prezzo deve essere positivo")
   private BigDecimal price;
   
   public Pizza() {
