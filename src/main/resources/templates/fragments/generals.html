@@ -6,21 +6,23 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <th:block th:fragment="resources">
-        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
-        <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}" defer></script>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}"/>
+        <script defer src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
     </th:block>
 
     <title>Document</title>
 </head>
 <body>
-<nav th:fragment="navbar" class="mb-5 mt-3">
+<nav th:fragment="navbar(current)" class="mb-5 mt-3">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/}">Home</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="/pizza">Menú</a>
+                        <a class="nav-link " aria-current="page" href="/pizza"
+                            th:classAppend="${current == 'pizza'} ? active : not-active">Menú</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" method="get" th:action="@{/pizza}">

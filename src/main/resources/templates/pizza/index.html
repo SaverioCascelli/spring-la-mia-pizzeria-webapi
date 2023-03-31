@@ -9,12 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-<nav th:replace="~{fragments/generals :: navbar}"></nav>
+<nav th:replace="~{fragments/generals :: navbar('pizza')}"></nav>
 <div class="container">
 
     <div class="row">
         <div class="col">
-
+            <a href="/pizza/create">new pizza</a>
             <h1>Menu:</h1>
 
             <div th:if="${pizzas.size() == 0}">

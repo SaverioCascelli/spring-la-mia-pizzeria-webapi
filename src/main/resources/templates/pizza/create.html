@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <th:block th:replace="~{fragments/generals :: resources}"></th:block>
+    <title>Document</title>
+</head>
+<body>
+<nav th:replace="~{fragments/generals :: navbar('pizza')}"></nav>
+
+<h1>Create</h1>
+<form id="pizza-form" th:object="${pizza}" th:action="@{/pizza/create} " method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" th:fiels="*{name}">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" step=".10" class="form-control" id="price" th:fiels="*{price}">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" th:fiels="*{description}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
