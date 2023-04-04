@@ -18,7 +18,7 @@ public class Pizza {
   @Size(max = 255, message = "La descrizione ha una grandezza massima di 255 caratteri")
   private String description;
   @Column(columnDefinition = "varchar(255) default 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg'")
-  private String imgUrl;
+  private String imgUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg";
   @NotEmpty(message = "Il campo 'nome' non può essere vuoto.")
   private String name;
   @Positive(message = "Il prezzo deve essere positivo")
@@ -66,5 +66,29 @@ public class Pizza {
   
   public void setPrice(BigDecimal price) {
     this.price = price;
+  }
+  
+  @Override
+  public String toString() {
+    return "Pizza{" +
+        "id=" + id +
+        ", description='" + description + '\'' +
+        ", imgUrl='" + imgUrl + '\'' +
+        ", name='" + name + '\'' +
+        ", price=" + price +
+        '}';
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Pizza pizza)) return false;
+    
+    return getId() != null ? getId().equals(pizza.getId()) : pizza.getId() == null;
+  }
+  
+  @Override
+  public int hashCode() {
+    return getId() != null ? getId().hashCode() : 0;
   }
 }

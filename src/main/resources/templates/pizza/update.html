@@ -10,12 +10,11 @@
 </head>
 <body>
 <nav th:replace="~{fragments/generals :: navbar('pizza')}"></nav>
-
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Create</h1>
-            <form id="pizza-form" th:object="${pizza}" th:action="@{/pizza/create} " method="post">
+            <h1>Update</h1>
+            <form id="pizza-form" th:object="${pizza}" th:action="@{|/pizza/update/*{id}|} " method="post">
                 <ul>
                     <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
                 </ul>
@@ -53,8 +52,9 @@
             </form>
         </div>
     </div>
+
 </div>
-<!--errors-->
+
 
 </body>
 </html>
