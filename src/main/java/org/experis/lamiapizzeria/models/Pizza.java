@@ -1,8 +1,9 @@
 package org.experis.lamiapizzeria.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
@@ -21,7 +22,8 @@ public class Pizza {
   private String imgUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg";
   @NotEmpty(message = "Il campo 'nome' non può essere vuoto.")
   private String name;
-  @Positive(message = "Il prezzo deve essere positivo")
+  @DecimalMin(message = "Il prezzo deve essere positivo", value = "0.1")
+  @NotNull(message = "Il campo non può essere vuoto")
   private BigDecimal price;
   
   public Pizza() {

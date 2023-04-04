@@ -71,12 +71,21 @@ public class PizzaController {
   
   @PostMapping("update/{id}")
   public String postUpdate(
-      @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, @PathVariable Integer id,
-      RedirectAttributes redirectAttributes) {
-    pizzaService.update(pizza);
+      @Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, @PathVariable Integer id,
+      RedirectAttributes redirectAttributes, Model model) {
+    if (bindingResult.hasErrors()) {
+      return "pizza/update";
+    }
+    pizzaService.update(pizza, id);
     return "redirect:/pizza";
-    
   }
+  
+  @GetMapping("delete/{id}")
+  public String delete(@PathVariable("id") Integer id) {
+    pizzaService.deleteById(id);
+    return "redirect:/pizza";
+  }
+  
 }
 
 

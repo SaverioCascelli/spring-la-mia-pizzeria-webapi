@@ -37,12 +37,22 @@ public class PizzaService {
     return pizzaRepository.findAll();
   }
   
-  public boolean update(Pizza pizza) {
+  public boolean update(Pizza pizza, Integer id) {
     boolean edited = false;
-    pizzaRepository.save(pizza);
-    
+    if (pizza.getId() == id && id != null) {
+      pizzaRepository.save(pizza);
+      edited = true;
+    }
     return edited;
   }
+  
+  public boolean deleteById(Integer id) {
+    boolean deleted = false;
+    Pizza pizza = pizzaRepository.findById(id).orElseThrow(() -> new PizzaNotFoundException("pizza not found for delete"));
+    pizzaRepository.deleteById(id);
+    return deleted;
+  }
+  
   
 }
 
