@@ -18,6 +18,7 @@ public class PizzaNotFoundException extends ResponseStatusException {
   
   public PizzaNotFoundException(int rawStatusCode, String reason, Throwable cause) {
     super(rawStatusCode, reason, cause);
+    
   }
   
   public PizzaNotFoundException(HttpStatusCode status, String reason, Throwable cause) {
