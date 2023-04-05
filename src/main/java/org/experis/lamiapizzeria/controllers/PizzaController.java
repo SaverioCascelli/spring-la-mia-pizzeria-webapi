@@ -84,6 +84,7 @@ public class PizzaController {
   public String delete(@PathVariable("id") Integer id) {
     pizzaService.deleteById(id);
     return "redirect:/pizza";
+    
   }
   
 }
