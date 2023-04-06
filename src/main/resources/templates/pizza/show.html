@@ -12,15 +12,26 @@
 <nav th:replace="~{fragments/generals :: navbar('pizza')}"></nav>
 <div class="container">
 
-    <div class="row">
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img th:src="${pizza.imgUrl}">
+    <div class="row" th:object="${pizza}">
+        <div class="col-4">
+            <div class="card">
+                <img th:src="*{imgUrl}" style="max-width: 100%">
                 <div class="card-body ">
-                    <h5 class="card-title" th:text="${pizza.name}"></h5>
-                    <p class="card-text" th:text="${pizza.description}"></p>
+                    <h5 class="card-title" th:text="*{name}"></h5>
+                    <p class="card-text" th:text="*{description}"></p>
+                    <p class="card-text" th:text="|*{price}€|"></p>
                 </div>
             </div>
+        </div>
+        <div class="col-4">
+            <a th:href="@{/discount/create(pizza=${pizza.id})}">+</a>
+            <ul th:each="discount : *{discountList}" th:object="${discount}">
+                <li th:text="*{title}"></li>
+                <li><span>Starts in: </span> <span
+                        th:text="${#temporals.format(discount.startDate,'dd/MM/yyy')}"></span></li>
+                <li><span>Ends in: </span> <span
+                        th:text="${#temporals.format(discount.endDate,'dd/MM/yyy')}"></span></li>
+            </ul>
         </div>
     </div>
 </div>

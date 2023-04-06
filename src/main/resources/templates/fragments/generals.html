@@ -15,7 +15,7 @@
 </head>
 <body>
 <nav th:fragment="navbar(current)" class="mb-5 mt-3">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/}">Home</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,6 +34,27 @@
         </div>
     </nav>
 </nav>
+<div class="form-field" th:fragment="field(name,type)">
 
+    <label th:for="${name}" class="form-label" th:text="${name}"></label>
+    <input th:attr="type=${type}" class="form-control" th:id="${name}" th:field="*{__${name}__}"
+           th:errorClass="is-invalid">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('__${name}__')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('__${name}__')}" th:text="${err}"></li>
+        </ul>
+    </div>
+</div>
+<div class="form-field" th:fragment="fieldNumber(name)">
+
+    <label th:for="${name}" class="form-label" th:text="${name}"></label>
+    <input type="number" step="0.01" class="form-control" th:id="${name}" th:field="*{__${name}__}"
+           th:errorClass="is-invalid">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('__${name}__')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('__${name}__')}" th:text="${err}"></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

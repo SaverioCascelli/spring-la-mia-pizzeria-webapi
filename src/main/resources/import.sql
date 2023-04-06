@@ -1,3 +1,10 @@
-INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza buona', 'margherita', 8.55);
+INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza buona', 'pizza margherita', 8.55);
 INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza buonissima', 'pizza con rape', 13.55);
 INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza medio buona', 'pizza rossa', 7.65);
+INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza buona', 'pizza diavola', 10.55);
+INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza buonissima', 'pizza con pistacchio', 10.55);
+INSERT INTO db_pizzeria.pizzas (description, name, price) VALUES('pizza medio buona', 'pizza con mortadella', 11.5);
+INSERT INTO db_pizzeria.discounts (discount_percent, end_date, start_date, title, pizza_id) VALUES(.15, '2023-05-25', '2023-04-25 00:00:00', 'Sconto 15%', 1);
+INSERT INTO db_pizzeria.discounts (discount_percent, end_date, start_date, title, pizza_id) VALUES(.15, '2023-05-25', '2023-04-25 00:00:00', 'Sconto 15%', 2);
+INSERT INTO db_pizzeria.discounts (discount_percent, end_date, start_date, title, pizza_id) VALUES(.25, '2023-05-25', '2023-04-25 00:00:00', 'Sconto 25%', 2);
+INSERT INTO db_pizzeria.discounts (discount_percent, end_date, start_date, title, pizza_id) VALUES(.35, '2023-05-25', '2023-04-25 00:00:00', 'Sconto 35%', 3);
