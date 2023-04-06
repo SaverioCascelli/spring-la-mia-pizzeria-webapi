@@ -33,6 +33,11 @@
                         th:text="${#temporals.format(discount.endDate,'dd/MM/yyy')}"></span></li>
             </ul>
         </div>
+        <div class="col-4">
+            <ul>
+                <li th:each="ingredient : *{ingredients}" th:text="${ingredient.name}"></li>
+            </ul>
+        </div>
     </div>
 </div>
 

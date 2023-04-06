@@ -2,7 +2,9 @@ package org.experis.lamiapizzeria.controllers;
 
 import jakarta.validation.Valid;
 import org.experis.lamiapizzeria.exception.PizzaNotFoundException;
+import org.experis.lamiapizzeria.models.Ingredient;
 import org.experis.lamiapizzeria.models.Pizza;
+import org.experis.lamiapizzeria.service.IngredientService;
 import org.experis.lamiapizzeria.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,12 @@ public class PizzaController {
   @Autowired
   private PizzaService pizzaService;
   
+  @Autowired
+  private IngredientService ingredientService;
+  
   
   @GetMapping
   public String index(Model model, @RequestParam(name = "search") Optional<String> keyword) {
-    
     List<Pizza> pizzas;
     if (keyword.isEmpty()) {
       pizzas = pizzaService.findAll();
@@ -42,6 +46,7 @@ public class PizzaController {
   @GetMapping("/{id}")
   public String show(@PathVariable("id") int pizzaId, Model model) {
     Pizza pizza = pizzaService.findById(pizzaId).orElseThrow(() -> new PizzaNotFoundException("pizza with ID: " + pizzaId + " not found"));
+    List<Ingredient> ingredients = ingredientService.getIngredients();
 //        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No pizza found for id: " + pizzaId));
     model.addAttribute("pizza", pizza);
     return "/pizza/show";
