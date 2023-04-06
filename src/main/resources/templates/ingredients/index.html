@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <th:block th:replace="~{fragments/generals :: resources}"></th:block>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="~{fragments/generals :: navbar('')}"></nav>
+<div class="container">
+    <div class="row">
+        <h1>Ingredients</h1>
+        <div class="col-6">
+            <h2>List of all ingredients</h2>
+            <ul>
+                <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name}"></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <h2>Create new ingredient</h2>
+            <form id="pizza-form" th:object="${ingredient}" th:action="@{/ingredients/create} " method="post">
+                <ul>
+                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+                </ul>
+                <div class="mb-3">
+                    <div th:replace="~{fragments/generals :: field('name','text')}"></div>
+                </div>
+                <div class="mb-3">
+                    <div th:replace="~{fragments/generals :: field('description','text')}"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

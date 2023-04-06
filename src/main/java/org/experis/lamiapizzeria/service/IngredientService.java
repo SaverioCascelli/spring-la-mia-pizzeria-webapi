@@ -17,5 +17,12 @@ public class IngredientService {
     return ingredientRepository.findAll();
   }
   
+  public boolean createNewIngredient(Ingredient ingredient) {
+    boolean created = false;
+    ingredientRepository.save(ingredient);
+    created = true;
+    
+    return created;
+  }
   
 }
