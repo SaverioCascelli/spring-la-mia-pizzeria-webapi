@@ -24,7 +24,8 @@
             </div>
         </div>
         <div class="col-4">
-            <a th:href="@{/discount/create(pizza=${pizza.id})}">+</a>
+            <h2>Discounts</h2>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/discount/create(pizza=${pizza.id})}">+</a>
             <ul th:each="discount : *{discountList}" th:object="${discount}">
                 <li th:text="*{title}"></li>
                 <li><span>Starts in: </span> <span
@@ -34,6 +35,7 @@
             </ul>
         </div>
         <div class="col-4">
+            <h2>Ingredients</h2>
             <ul>
                 <li th:each="ingredient : *{ingredients}" th:text="${ingredient.name}"></li>
             </ul>
