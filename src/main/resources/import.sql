@@ -23,4 +23,11 @@ INSERT INTO db_pizzeria.ingredient_pizza (pizza_id, ingredient_id) VALUES(2, 2);
 INSERT INTO db_pizzeria.ingredient_pizza (pizza_id, ingredient_id) VALUES(4, 2);
 INSERT INTO db_pizzeria.ingredient_pizza (pizza_id, ingredient_id) VALUES(5, 2);
 INSERT INTO db_pizzeria.ingredient_pizza (pizza_id, ingredient_id) VALUES(6, 1);
+INSERT INTO db_pizzeria.roles(name) VALUES('ADMIN');
+INSERT INTO db_pizzeria.roles(name) VALUES('USER');
+INSERT INTO db_pizzeria.users(name, password, username) VALUES('adminName','{noop}admin', 'admin');
+INSERT INTO db_pizzeria.users(name, password, username) VALUES('userName','{noop}user', 'user');
+INSERT INTO db_pizzeria.users_roles(user_id, roles_id) VALUES(1, 1);
+INSERT INTO db_pizzeria.users_roles(user_id, roles_id) VALUES(2, 2);
+
 
