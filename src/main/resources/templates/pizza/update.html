@@ -20,7 +20,7 @@
                 </ul>
                 <div class="mb-3">
 
-                    <div th:replace="~{fragments/generals :: field('name')}"></div>
+                    <div th:replace="~{fragments/generals :: field('name','text')}"></div>
                     <!--                    <label for="name" class="form-label">Name</label>-->
                     <!--                    <input type="text" class="form-control" id="name" th:field="*{name}" th:errorClass="is-invalid">-->
                     <!--                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">-->
@@ -39,7 +39,7 @@
                     <!--                        </ul>-->
                     <!--                    </div>-->
 
-                    <div th:replace="~{fragments/generals :: fieldNumber('price','text)}"></div>
+                    <div th:replace="~{fragments/generals :: fieldNumber('price')}"></div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
