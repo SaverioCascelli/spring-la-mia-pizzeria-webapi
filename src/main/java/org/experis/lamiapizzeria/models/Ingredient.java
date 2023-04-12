@@ -1,5 +1,6 @@
 package org.experis.lamiapizzeria.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -18,6 +19,7 @@ public class Ingredient {
   
   private String description;
   
+  @JsonIgnore
   @ManyToMany(mappedBy = "ingredients")
   private List<Pizza> pizzas;
   

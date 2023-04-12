@@ -3,7 +3,6 @@ package org.experis.lamiapizzeria.auth;
 import org.experis.lamiapizzeria.service.DatabaseUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -35,15 +34,17 @@ public class SecurityConfiguration {
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests()
+        .requestMatchers("/api/**").permitAll()
         .requestMatchers("/pizza/create").hasAuthority("ADMIN")
         .requestMatchers("/ingredients/**").hasAuthority("ADMIN")
         .requestMatchers("/discount/**").hasAuthority("ADMIN")
         .requestMatchers("/webjars/**").hasAnyAuthority("USER", "ADMIN")
-        .requestMatchers(HttpMethod.POST, "/pizza/**").hasAuthority("ADMIN")
+//        .requestMatchers(HttpMethod.POST, "/pizza/**").hasAuthority("ADMIN")
         .requestMatchers("/**").permitAll()
         .and().formLogin()
         .and().logout()
         .and().exceptionHandling();
+    http.csrf().disable();
     return http.build();
   }
 }

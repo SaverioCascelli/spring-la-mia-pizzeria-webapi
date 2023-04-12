@@ -1,5 +1,6 @@
 package org.experis.lamiapizzeria.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
@@ -20,6 +21,7 @@ public class Discount {
   private LocalDate startDate;
   @NotNull
   private LocalDate endDate;
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "pizza_id", nullable = false)
   private Pizza pizza;
